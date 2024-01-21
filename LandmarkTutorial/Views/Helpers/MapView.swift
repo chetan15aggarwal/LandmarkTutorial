@@ -26,7 +26,11 @@ struct MapView: View {
      }
 
     var body: some View {
-        Map(initialPosition: .region(region))
+        if #available(iOS 17.0, *) {
+            Map(initialPosition: .region(region))
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
 
