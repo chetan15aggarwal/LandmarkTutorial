@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct ProfileSummary: View {
-    var modelData: ModelData
+    @EnvironmentObject var viewModel: HikeViewModel
 
     var profile: Profile
     
@@ -26,7 +26,6 @@ struct ProfileSummary: View {
                 VStack(alignment: .leading) {
                     Text("Completed Badge")
                         .font(.headline)
-                    
                     ScrollView(.horizontal){
                         HStack {
                             HikeBadge(name: "First Hike")
@@ -45,9 +44,9 @@ struct ProfileSummary: View {
                 VStack(alignment: .leading) {
                     Text("Recent Hikes")
                         .font(.headline)
-                    
-                    
-                    HikeView(hike: modelData.hikes[0])
+                    if !viewModel.hikeList.isEmpty {
+                        HikeView(hike: viewModel.hikeList[0])
+                    }
                 }
             }
         }
@@ -55,5 +54,5 @@ struct ProfileSummary: View {
 }
 
 #Preview {
-    ProfileSummary(modelData: ModelData(), profile: Profile.default)
+    ProfileSummary(profile: Profile.default)
 }

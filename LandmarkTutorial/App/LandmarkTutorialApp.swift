@@ -29,8 +29,3 @@ struct LandmarkTutorialApp: App {
         #endif
     }
 }
-
-let landmark1 = LandmarkModel(id: 1, name: "Turtle Rock", park: "Joshua Tree National Park", state: "California", description: "this is the best place to visit", isFavorite: true, isFeatured: true, category: .rivers, imageName: "turtlerock", coordinates: LandmarkModel.Coordinates(latitude: -116.166868, longitude: 34.011286))
-
-let landmark2 = LandmarkModel(id: 2, name: "Silver Salmon Creek", park: "Joshua Tree National Park", state: "California", description: "this is the best place to visit", isFavorite: false, isFeatured: false, category: .lakes, imageName: "silversalmoncreek", coordinates: LandmarkModel.Coordinates(latitude: -152.665167, longitude: 59.980167))
-let landmarkItemsForPreview = [landmark1, landmark2]

@@ -23,7 +23,7 @@ class NotificationController: WKUserNotificationHostingController<NotificationVi
     }
     
     override func didReceive(_ notification: UNNotification) {
-        let modelData = ModelData()
+//        let modelData = ModelData()
         let notificationData =
             notification.request.content.userInfo as? [String: Any]
 

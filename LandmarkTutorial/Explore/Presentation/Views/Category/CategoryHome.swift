@@ -11,7 +11,7 @@ struct CategoryHome: View {
     var body: some View {
         NavigationSplitView {
             List{
-                if viewModel.landmarkList.count > 0 {
+                if !viewModel.landmarkList.isEmpty {
                     PageView(pages: viewModel.features.map { FeatureCard(landmark: $0) })
                         .listRowInsets(EdgeInsets())
                     
@@ -31,7 +31,11 @@ struct CategoryHome: View {
                 }
             }
             .sheet(isPresented: $viewModel.showingProfile) {
+                let profileViewModel = HikeViewModel()
                 ProfileHost()
+                    .environmentObject(profileViewModel)
+                    .task { profileViewModel.loadHikeList() }
+
             }
             .task { viewModel.loadLandmarkList() }
         } detail: {

@@ -6,7 +6,6 @@
 import SwiftUI
 
 struct ProfileEditor: View {
-    
     @Binding var profile: Profile
     
     var dateRange: ClosedRange<Date> {
