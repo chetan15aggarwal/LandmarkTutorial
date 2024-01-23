@@ -9,7 +9,7 @@ struct NotificationView: View {
     
     var title: String?
     var message: String?
-    var landmark: Landmark?
+    var landmark: LandmarkModel?
     
     var body: some View {
         VStack {
@@ -30,5 +30,5 @@ struct NotificationView: View {
     NotificationView(
         title: "Turtle Rock",
         message: "You are within 5 miles of Turtle Rock.",
-        landmark: ModelData().landmarks[0])
+        landmark: landmarkItemsForPreview[0])
 }

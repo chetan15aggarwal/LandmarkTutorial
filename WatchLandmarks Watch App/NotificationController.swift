@@ -8,7 +8,7 @@ import SwiftUI
 import UserNotifications
 
 class NotificationController: WKUserNotificationHostingController<NotificationView> {
-    var landmark: Landmark?
+    var landmark: LandmarkModel?
     var title: String?
     var message: String?
     
@@ -24,8 +24,6 @@ class NotificationController: WKUserNotificationHostingController<NotificationVi
     
     override func didReceive(_ notification: UNNotification) {
         let modelData = ModelData()
-
-
         let notificationData =
             notification.request.content.userInfo as? [String: Any]
 
@@ -39,7 +37,8 @@ class NotificationController: WKUserNotificationHostingController<NotificationVi
 
 
         if let index = notificationData?[landmarkIndexKey] as? Int {
-            landmark = modelData.landmarks[index]
+            //TODO: transfer value back to the view model
+//            landmark = modelData.landmarks[index]
         }
     }
 }
