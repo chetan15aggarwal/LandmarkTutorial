@@ -16,7 +16,6 @@ struct CategoryRow: View {
                 .padding(.leading, 15)
                 .padding(.top, 5)
             
-            
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(items) { landmark in

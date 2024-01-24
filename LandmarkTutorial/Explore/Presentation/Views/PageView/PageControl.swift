@@ -13,7 +13,7 @@ struct PageControl: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     func makeUIView(context: Context) -> UIPageControl {
         let control = UIPageControl()
         control.numberOfPages = numberOfPages
@@ -23,7 +23,7 @@ struct PageControl: UIViewRepresentable {
             for: .valueChanged)
         return control
     }
-
+    
     func updateUIView(_ uiView: UIPageControl, context: Context) {
         uiView.currentPage = currentPage
     }
@@ -34,8 +34,7 @@ struct PageControl: UIViewRepresentable {
         init(_ control: PageControl) {
             self.control = control
         }
-
-
+        
         @objc
         func updateCurrentPage(sender: UIPageControl) {
             control.currentPage = sender.currentPage

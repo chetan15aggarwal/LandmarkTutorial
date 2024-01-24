@@ -6,18 +6,15 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-        
+    
+    @EnvironmentObject var viewModel: LandmarkExploreViewModel
     var landmark: LandmarkModel
     
-    //TODO: Check how to pass the integer here
     var landmarkIndex: Int {
-        return 1
-        //modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+        viewModel.landmarkList.firstIndex(where: { $0.id == landmark.id }) ?? 0
     }
+    
     var body: some View {
-        //TODO: This will update the value
-        //check how to implement through model
-//        @ObservedObject var modelData = modelData
         ScrollView {
             VStack {
                 CircleImage(image: landmark.image.resizable())
@@ -27,9 +24,9 @@ struct LandmarkDetail: View {
                     .font(.headline)
                     .lineLimit(0)
 
-//                Toggle(isOn: $modelData.landmarks[landmarkIndex].isFavorite) {
-//                    Text("Favorite")
-//                }
+                Toggle(isOn: $viewModel.landmarkList[landmarkIndex].isFavorite) {
+                    Text("Favorite")
+                }
                 Divider()
                 Text(landmark.park)
                     .font(.caption)

@@ -11,7 +11,7 @@ struct CategoryHome: View {
     var body: some View {
         NavigationSplitView {
             List{
-                if !viewModel.landmarkList.isEmpty {
+                if !viewModel.isListEmpty {
                     PageView(pages: viewModel.features.map { FeatureCard(landmark: $0) })
                         .listRowInsets(EdgeInsets())
                     

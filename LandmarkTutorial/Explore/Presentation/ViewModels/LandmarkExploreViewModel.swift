@@ -41,6 +41,10 @@ class LandmarkExploreViewModel: ObservableObject {
         landmarkList.filter { $0.isFeatured }
     }
     
+    var isListEmpty: Bool {
+        landmarkList.isEmpty
+    }
+    
     //Methods
     func handleOnAppear(landmark: LandmarkModel) {
         guard landmarkList.last == landmark else { return }

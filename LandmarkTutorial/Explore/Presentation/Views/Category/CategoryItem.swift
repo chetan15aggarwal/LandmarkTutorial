@@ -24,7 +24,6 @@ struct CategoryItem: View {
     }
 }
 
-
 #Preview {
     return CategoryItem(landmark: landmarkItemsForPreview[0])
 }
