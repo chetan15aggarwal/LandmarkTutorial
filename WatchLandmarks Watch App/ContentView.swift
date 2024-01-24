@@ -9,7 +9,7 @@ import UserNotifications
 struct ContentView: View {
     var body: some View {
         LandmarkList()
-            .environmentObject(LandmarkExploreViewModel())
+            .environmentObject(ExploreModule().provideExploreViewModel())
             .task {
                 let center = UNUserNotificationCenter.current()
                 _ = try? await center.requestAuthorization(

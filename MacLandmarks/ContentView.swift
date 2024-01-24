@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        let viewModel = LandmarkExploreViewModel()
+        let viewModel = ExploreModule().provideExploreViewModel()
         
         LandmarkList()
             .environmentObject(viewModel)

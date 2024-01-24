@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ProfileHost: View {
     @Environment(\.editMode) var editMode
-    @StateObject var viewModel: HikeViewModel = HikeViewModel()
+    @StateObject var viewModel = ProfileModule().provideProfileViewModel()
     @State private var draftProfile = Profile.default
     
     var body: some View {

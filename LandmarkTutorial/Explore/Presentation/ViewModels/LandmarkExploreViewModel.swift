@@ -9,7 +9,11 @@ import Foundation
 class LandmarkExploreViewModel: ObservableObject {
     
     //Use case
-    private let getLandmarkUseCase: GetLandmarkListUseCase = GetLandmarkListUseCase(landmarkRepository: LandmarkRepository.shared)
+    private let getLandmarkUseCase: GetLandmarkListUseCase
+    
+    init(_ useCase: GetLandmarkListUseCase) {
+        getLandmarkUseCase = useCase
+    }
     
     //Publish objects for Categories
     @Published var landmarkList: [LandmarkModel] = [LandmarkModel]()

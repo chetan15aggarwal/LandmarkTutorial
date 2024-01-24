@@ -6,9 +6,13 @@
 import Foundation
 
 @MainActor
-class HikeViewModel: ObservableObject {
+class ProfileViewModel: ObservableObject {
     
-    private let getHikeUseCase: GetHikeListUseCase = GetHikeListUseCase(repository: HikeRepository())
+    private let getHikeUseCase: GetHikeListUseCase
+    
+    init(_ getHikeUseCase: GetHikeListUseCase) {
+        self.getHikeUseCase = getHikeUseCase
+    }
     @Published var hikeList: [Hike] = [Hike]()
     @Published var profile = Profile.default
     

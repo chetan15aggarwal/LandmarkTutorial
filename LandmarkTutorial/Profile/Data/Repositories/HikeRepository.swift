@@ -6,8 +6,11 @@
 import Foundation
 
 struct HikeRepository: HikeRepositoryProtocol {
-    static let shared = HikeRepository()
-    private let hikeDataSource = LocalHikeDataSource()
+    private let hikeDataSource: LocalHikeDataSource
+    
+    init(_ hikeDataSource: LocalHikeDataSource) {
+        self.hikeDataSource = hikeDataSource
+    }
     
     func fetchHikeList(limit: Int, offset: Int) async throws -> [HikeEntity] {
         let hikeList = try await hikeDataSource.fetchHikeData(limit: limit, offset: offset)

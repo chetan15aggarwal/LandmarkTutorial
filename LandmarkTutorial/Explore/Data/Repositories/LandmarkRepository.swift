@@ -6,8 +6,11 @@
 import Foundation
 
 struct LandmarkRepository: LandmarkRepositoryProtocol {
-    static let shared = LandmarkRepository()
-    private let landmarkDataSource = LocalLandmarkDataSource()
+    private let landmarkDataSource: LocalLandmarkDataSource
+    
+    init(landmarkDataSource: LocalLandmarkDataSource) {
+        self.landmarkDataSource = landmarkDataSource
+    }
     
     func fetchLandmarkList(limit: Int, offset: Int) async throws -> [LandmarkEntity] {
         let landmarks = try await landmarkDataSource.fetchLandmarkList(limit: limit, offset: offset)
