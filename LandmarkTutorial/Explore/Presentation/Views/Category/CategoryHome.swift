@@ -31,11 +31,7 @@ struct CategoryHome: View {
                 }
             }
             .sheet(isPresented: $viewModel.showingProfile) {
-                let profileViewModel = HikeViewModel()
                 ProfileHost()
-                    .environmentObject(profileViewModel)
-                    .task { profileViewModel.loadHikeList() }
-
             }
             .task { viewModel.loadLandmarkList() }
         } detail: {

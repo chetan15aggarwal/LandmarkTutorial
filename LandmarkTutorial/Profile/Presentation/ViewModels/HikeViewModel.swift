@@ -10,7 +10,7 @@ class HikeViewModel: ObservableObject {
     
     private let getHikeUseCase: GetHikeListUseCase = GetHikeListUseCase(repository: HikeRepository())
     @Published var hikeList: [Hike] = [Hike]()
-    var profile = Profile.default
+    @Published var profile = Profile.default
     
     func loadHikeList() {
         Task {

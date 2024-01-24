@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ProfileHost: View {
     @Environment(\.editMode) var editMode
-    @EnvironmentObject var viewModel: HikeViewModel
+    @StateObject var viewModel: HikeViewModel = HikeViewModel()
     @State private var draftProfile = Profile.default
     
     var body: some View {
@@ -35,6 +35,7 @@ struct ProfileHost: View {
                     }
             }
         }
+        .task { viewModel.loadHikeList() }
         .padding()
     }
 }

@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct ProfileSummary: View {
-    @EnvironmentObject var viewModel: HikeViewModel
+    @StateObject var viewModel: HikeViewModel = HikeViewModel()
 
     var profile: Profile
     
