@@ -23,7 +23,6 @@ class LandmarkExploreViewModel: ObservableObject {
     //Publish objects for Listing
     @Published var showFavoritesOnly = false
     @Published var filter = FilterCategory.all
-    @Published var selectedLandmark: LandmarkModel?
         
     enum FilterCategory: String, CaseIterable, Identifiable {
         case all = "All"

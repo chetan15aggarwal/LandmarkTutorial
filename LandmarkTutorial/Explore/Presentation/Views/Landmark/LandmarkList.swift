@@ -6,9 +6,9 @@
 import SwiftUI
 
 struct LandmarkList: View {
-    //TODO: check the code which can be moved to the view model
     @EnvironmentObject var viewModel: LandmarkExploreViewModel
-    
+    @State var selectedLandmark: LandmarkModel?
+
     var filteredLandmarks: [LandmarkModel] {
         viewModel.landmarkList.filter { landmark in
             (!viewModel.showFavoritesOnly || landmark.isFavorite)
@@ -22,12 +22,12 @@ struct LandmarkList: View {
     }
     
     var index: Int? {
-        viewModel.landmarkList.firstIndex(where: { $0.id == viewModel.selectedLandmark?.id })
+        viewModel.landmarkList.firstIndex(where: { $0.id == selectedLandmark?.id })
     }
     
     var body: some View {
         NavigationSplitView {
-            List(selection: $viewModel.selectedLandmark) {
+            List(selection: $selectedLandmark) {
                 ForEach(filteredLandmarks) { landmark in
                     NavigationLink {
                         LandmarkDetail(landmark: landmark)
@@ -35,6 +35,7 @@ struct LandmarkList: View {
                         LandmarkRow(landmark: landmark)
                     }
                     .tag(landmark)
+                    .focusedValue(\.selectedLandmark, $viewModel.landmarkList[index ?? 0])
                 }
             }
             #if os(macOS)
@@ -66,9 +67,6 @@ struct LandmarkList: View {
         } detail: {
             Text("Select a Landmark")
         }
-        //TODO: fix the error
-//        .focusedValue(\.$viewModel.selectedLandmark, $viewModel.landmarkList[index ?? 0])
-
     }
 }
 
